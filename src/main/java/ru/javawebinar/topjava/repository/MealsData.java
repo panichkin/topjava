@@ -8,7 +8,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class MealsData {
-    private static List<Meal> meals = Arrays.asList(
+    private static final List<Meal> meals = Arrays.asList(
             new Meal(LocalDateTime.of(2020, Month.JANUARY, 30, 10, 0), "Завтрак", 500),
             new Meal(LocalDateTime.of(2020, Month.JANUARY, 30, 13, 0), "Обед", 1000),
             new Meal(LocalDateTime.of(2020, Month.JANUARY, 30, 20, 0), "Ужин", 500),

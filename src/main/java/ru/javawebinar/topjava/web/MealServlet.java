@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.List;
 
@@ -22,7 +21,7 @@ public class MealServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        List<MealTo> listOfMealTo = MealsUtil.filteredByStreams(MealsData.getAll(), LocalTime.of(0,0), LocalTime.of(23,59,59), 2000);
+        List<MealTo> listOfMealTo = MealsUtil.filteredByStreams(MealsData.getAll(), LocalTime.of(0, 0), LocalTime.of(23, 59, 59), 2000);
 
         req.setAttribute("listofmealto", listOfMealTo);
         log.debug("redirect to meals");
