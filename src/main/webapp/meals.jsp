@@ -18,7 +18,10 @@
     <c:forEach items="${requestScope.listofmealto}" var="mealto">
 
         <tr class = ${mealto.excess?"excess":"noexcess"}>
-            <td>${mealto.dateTime}</td>
+            <td>
+                <fmt:parseDate value="${mealto.dateTime}" pattern="yyyy-MM-dd'T'HH:mm" var="parsedDateTime" type="both" />
+                <fmt:formatDate pattern="dd.MM.yyyy HH:mm" value="${parsedDateTime}" />
+            </td>
             <td>${mealto.description}</td>
             <td>${mealto.calories}</td>
         </tr>
