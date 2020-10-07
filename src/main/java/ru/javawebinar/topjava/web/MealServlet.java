@@ -17,7 +17,7 @@ import static org.slf4j.LoggerFactory.getLogger;
 
 public class MealServlet extends HttpServlet {
     public static final int CALORIES_PER_DAY = 2000;
-    public static final Logger log = getLogger(MealServlet.class);
+    private static final Logger log = getLogger(MealServlet.class);
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
