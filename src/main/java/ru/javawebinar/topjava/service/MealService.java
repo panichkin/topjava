@@ -9,44 +9,40 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.List;
 
-import static ru.javawebinar.topjava.util.ValidationUtil.checkNotFoundWithId;
-
 @Service
 public class MealService {
-    private MealRepository repository;
+    private final MealRepository repository;
 
     public MealService(MealRepository repository) {
         this.repository = repository;
     }
 
-    public Meal get(int id, int authUserId) {
-        Meal m = repository.get(id, authUserId);
-        if(m == null) throw new NotFoundException("get()");
+    public Meal get(int id, int userId) {
+        Meal m = repository.get(id, userId);
+        if (m == null) throw new NotFoundException("get()");
         return m;
     }
 
-    public List<Meal> getAll(int authUserId) {
-        return repository.getAll(authUserId);
+    public List<Meal> getAll(int userId) {
+        return repository.getAll(userId);
     }
 
-    public List<Meal> getAll(int authUserId, LocalDate startDate, LocalDate endDate, LocalTime startTime, LocalTime endTime) {
-        return repository.getAll(authUserId, startDate, endDate, startTime, endTime);
+    public List<Meal> getAll(LocalDate startDate, LocalDate endDate, LocalTime startTime, LocalTime endTime, int userId) {
+        return repository.getAll(startDate, endDate, startTime, endTime, userId);
     }
 
-    public Meal create(Meal meal, int authUserId) {
-        Meal m = repository.save(meal, authUserId);
-        if(m == null) throw new NotFoundException("create()");
+    public Meal create(Meal meal, int userId) {
+        Meal m = repository.save(meal, userId);
         return m;
     }
 
-    public void delete(int id, int authUserId) {
-        if(!repository.delete(id, authUserId))
+    public void delete(int id, int userId) {
+        if (! repository.delete(id, userId))
             throw new NotFoundException("delete()");
     }
 
-    public void update(Meal meal, int authUserId) {
-        Meal m =  repository.save(meal, authUserId);
-        if(m == null) throw new NotFoundException("update()");
+    public void update(Meal meal, int userId) {
+        Meal m = repository.save(meal, userId);
+        if (m == null) throw new NotFoundException("update()");
     }
-
 }
