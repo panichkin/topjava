@@ -99,7 +99,6 @@ public class MealServiceTest {
 
     @Test
     public void get() {
-        System.out.println(service.getRepository());
         Meal actual = service.get(ADMIN_MEAL_ID, ADMIN_ID);
         MEAL_MATCHER.assertMatch(actual, adminMeal1);
     }
